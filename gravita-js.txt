@@ -1,0 +1,48 @@
+ /*
+   * Product
+   */
+
+  let product = $(".product");
+    if (product.length > 0) {
+      $(window).on("scroll", function () {
+        let offsetTop = $(window).scrollTop();
+        if (window.innerWidth > 991) {         
+          let productOffsetTop = product.offset().top;
+          let productOffsetBottom =
+            productOffsetTop +
+            product.find(".product__row").height() -
+            product.find(".product__wrap").height();
+  
+          if (
+            offsetTop > productOffsetTop &&
+            offsetTop < productOffsetBottom &&
+            !product.hasClass("fixed")
+          ) {
+            product.addClass("fixed").removeClass("absolute");
+          } else if (offsetTop < productOffsetTop) {
+            product.removeClass("fixed");
+          } else if (
+            offsetTop > productOffsetBottom &&
+            !product.hasClass("absolute")
+          ) {
+            product.removeClass("fixed").addClass("absolute");
+          }  
+        } else {
+        let delta = 230;
+        if (window.innerWidth < 576) {
+          delta = 180;
+        }
+        let productOffsetBottom =
+          product.offset().top +
+          product.find(".product__left").height() -
+          $(window).height() +
+          delta;
+
+        if (offsetTop > productOffsetBottom) {
+          $(".product__right").addClass("static");
+        } else {
+          $(".product__right").removeClass("static");
+        }
+      }
+    });
+  }
