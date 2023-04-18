@@ -896,7 +896,7 @@ $(function () {
         if (offsetTop > productOffsetBottom) {
           document.querySelector(".product__right").classList.add("static")
         } else {
-          document.querySelector(".product-__right").classList.remove("static")
+          document.querySelector(".product__right").classList.remove("static")
 
         }
       }
