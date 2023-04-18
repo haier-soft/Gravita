@@ -533,7 +533,6 @@ $(function () {
 
   let product = $(".product");
     if (product.length > 0) {
-      $(".product__right").css({"transition": "all .5s linear"})
       $(window).on("scroll", function () {
         let offsetTop = $(window).scrollTop();
         if (window.innerWidth > 991) {         
