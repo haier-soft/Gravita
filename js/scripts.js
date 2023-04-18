@@ -1,11 +1,3 @@
-const product = document.querySelector(".product")
-let productOffsetBotto =
-      product.offsetTop +
-      product.querySelector(".product__left").offsetHeight -
-      window.innerHeight +
-      180;
-      console.log( product.querySelector(".product__left").clientHeight)
-      
 function set_100vh_var() {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -572,9 +564,8 @@ $(function () {
         let productOffsetBottom =
           product.offset().top +
           product.find(".product__left").height() -
-          $(window).height() +
-          delta 
-//alert( product.find(".product__left").height())
+          $(window).height()  +
+          delta
         if (offsetTop > productOffsetBottom) {
           $(".product__right").addClass("static");
         } else {
