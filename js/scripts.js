@@ -567,7 +567,7 @@ $(function () {
           product.offset().top +
           product.find(".product__left").height() -
           $(window).height() +
-          delta - f
+          delta - 100
 
         if (offsetTop > productOffsetBottom) {
           $(".product__right").addClass("static");
