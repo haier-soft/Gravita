@@ -1,4 +1,3 @@
-document.querySelector(".header").style.cssText+="display: none"
 function set_100vh_var() {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
