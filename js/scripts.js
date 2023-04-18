@@ -554,7 +554,7 @@ $(function () {
           product.offset().top +
           product.find(".product__left").height() -
           $(window).height() +
-          delta;
+          delta - (window.outerHeight - window.innerHeight);
 
         if (offsetTop > productOffsetBottom) {
           $(".product__right").addClass("static");
@@ -898,7 +898,7 @@ if (product) {
   }
 });
 } */
- function set_100vh_var() {
+/*  function set_100vh_var() {
   document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`);
 };
 window.addEventListener('resize', function () {
@@ -906,4 +906,4 @@ window.addEventListener('resize', function () {
 });
 window.addEventListener('orientationchange', function () {
   set_100vh_var();
-});
+}); */
