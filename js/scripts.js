@@ -1,7 +1,7 @@
+const f = window.outerHeight - window.innerHeight
 function set_100vh_var() {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
-  document.documentElement.style.setProperty('--v', `red`);
 };
 set_100vh_var()
 window.addEventListener('resize', function () {
@@ -566,7 +566,7 @@ $(function () {
           product.offset().top +
           product.find(".product__left").height() -
           $(window).height() +
-          delta - (window.outerHeight - window.innerHeight);
+          delta - f
 
         if (offsetTop > productOffsetBottom) {
           $(".product__right").addClass("static");
