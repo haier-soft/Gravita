@@ -1,5 +1,3 @@
-const f = window.outerHeight - window.innerHeight
-alert(f)
 function set_100vh_var() {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -15,7 +13,7 @@ $(function () {
   var screenWidth = screen.width;
   var windowWidth = $(window).width();
 
-  // Для демонстрации!!!! УДАЛИТЬ!!!!!!!!!!!!!!!
+  // Для демонстрации!!!! УДАЛИТЬ!!!!!!!!!!!!!!! 
 
   $("#js-modal-callback .modal__btn").on("click", function (e) {
     e.preventDefault();
