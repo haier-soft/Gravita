@@ -1,3 +1,12 @@
+function set_100vh_var() {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`);
+};
+window.addEventListener('resize', function () {
+  set_100vh_var();
+});
+window.addEventListener('orientationchange', function () {
+  set_100vh_var();
+}); 
 $(function () {
   var screenWidth = screen.width;
   var windowWidth = $(window).width();
