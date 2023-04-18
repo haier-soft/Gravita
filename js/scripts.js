@@ -516,12 +516,11 @@ $(function () {
       });
     });
   }
-
   /*
    * Product
    */
 
-  let product = $(".product");
+/*   let product = $(".product");
     if (product.length > 0) {
       $(window).on("scroll", function () {
         let offsetTop = $(window).scrollTop();
@@ -551,8 +550,6 @@ $(function () {
         if (window.innerWidth < 576) {
           delta = 180;
         }
-        console.log("d")
-        product.find(".product__right").css({top: window.innerHeight - delta + "px" }) 
         let productOffsetBottom =
           product.offset().top +
           product.find(".product__left").height() -
@@ -566,7 +563,7 @@ $(function () {
         }
       }
     });
-  }
+  } */
 
   $(".js-product-anchor").on("click", function (e) {
     e.preventDefault();
@@ -852,3 +849,52 @@ $(function () {
   // $("#min-price").val($("#range-price").slider("values", 0));
   // $("#max-price").val($("#range-price").slider("values", 1));
 });
+let product = document.querySelector(".product")
+if (product) {
+  console.log("dj")
+  window.addEventListener("scroll", function () {
+    let offsetTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (window.innerWidth > 991) {         
+      let productOffsetTop = product.offsetTop
+      let productOffsetBottom =
+        productOffsetTop +
+        product.querySelector(".product__row").offsetHeight -
+        product.querySelector(".product__wrap").offsetHeight;
+
+      if (
+        offsetTop > productOffsetTop &&
+        offsetTop < productOffsetBottom &&
+        !product.classList.contains("fixed")
+      ) {
+        product.classList.add("fixed")
+        product.classList.remove("absolute")
+      } else if (offsetTop < productOffsetTop) {
+        product.classList.remove("fixed");
+      } else if (
+        offsetTop > productOffsetBottom &&
+        !product.classList.contains("absolute")
+      ) {
+        product.classList.remove("fixed")
+        product.classList.add("absolute")
+      }  
+    } else {
+    let delta = 230;
+    if (window.innerWidth < 576) {
+      delta = 180;
+    }
+    product.querySelector(".product__right").style.top =  window.innerHeight - delta + "px"
+    let productOffsetBottom =
+      product.offsetTop +
+      product.querySelector(".product__left").offsetHeight -
+      window.innerHeight +
+      delta;
+
+    if (offsetTop > productOffsetBottom) {
+      document.querySelector(".product__right").classList.add("static")
+    } else {
+      document.querySelector(".product__right").classList.remove("static")
+
+    }
+  }
+});
+}
