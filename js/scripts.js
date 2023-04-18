@@ -551,7 +551,7 @@ $(function () {
         if (window.innerWidth < 576) {
           delta = 180;
         }
-        product.find(".product__right").style.top = window.innerHeight - delta + "px"
+        product.find(".product__right").position().top =  $(window).height() - delta + "px"
         let productOffsetBottom =
           product.offset().top +
           product.find(".product__left").height() -
