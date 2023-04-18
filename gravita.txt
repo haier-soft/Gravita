@@ -1,3 +1,4 @@
+ ///scripts.js str 521
  /*
    * Product
    */
@@ -46,3 +47,7 @@
       }
     });
   }
+
+  
+///position: fixed menyaem na position: sticky
+.product.fixed .product__wrap{position:sticky;top:0}
