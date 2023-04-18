@@ -520,7 +520,7 @@ $(function () {
    * Product
    */
 
-/*   let product = $(".product");
+  let product = $(".product");
     if (product.length > 0) {
       $(window).on("scroll", function () {
         let offsetTop = $(window).scrollTop();
@@ -563,7 +563,7 @@ $(function () {
         }
       }
     });
-  } */
+  }
 
   $(".js-product-anchor").on("click", function (e) {
     e.preventDefault();
@@ -849,7 +849,7 @@ $(function () {
   // $("#min-price").val($("#range-price").slider("values", 0));
   // $("#max-price").val($("#range-price").slider("values", 1));
 });
-let product = document.querySelector(".product")
+/* let product = document.querySelector(".product")
 if (product) {
   console.log("dj")
   window.addEventListener("scroll", function () {
@@ -897,7 +897,7 @@ if (product) {
     }
   }
 });
-}
+} */
 function set_100vh_var() {
   document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`);
 };
