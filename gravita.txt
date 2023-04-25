@@ -10,6 +10,13 @@ function searchFilterOnChange(inp) {
   }
 }
 
+function cleanSearchFilter(form) {
+  form.querySelector("input").value = ""
+  const resetBtn = form.querySelector(".f-search__reset")
+  resetBtn.style.visibility = "hidden"
+  resetBtn.style.pointerEvents = "none"
+}
+
 //html
 <div class="f-search__form">
     <form action="" >
