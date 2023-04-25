@@ -881,6 +881,7 @@ if (window.location.search) {
   
  }
  function searchFilterOnSubmit(form) {
+  event.preventDefault()
   const inp = form.querySelector("input")
   inp.value = ""
 }
