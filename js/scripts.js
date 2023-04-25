@@ -880,7 +880,10 @@ if (window.location.search) {
   }
   
  }
-
+ function searchFilterOnSubmit(form) {
+  const inp = form.querySelector("input")
+  inp.value = ""
+}
 function searchFilterOnChange(inp) {
   let form = inp.closest(".f-search__form") || inp.parentNode.parentNode
   const resetBtn = form.querySelector(".f-search__reset")
