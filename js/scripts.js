@@ -859,20 +859,28 @@ $(function () {
   // $("#min-price").val($("#range-price").slider("values", 0));
   // $("#max-price").val($("#range-price").slider("values", 1));
 });
-function searchFilterSuccess(form) {
-  event.preventDefault()
-    const filterSelected = document.querySelector(".filter__selected")
-    let inp = form.querySelector("input")
-    let findItem = Array.from(filterSelected.querySelectorAll(".filter__item")).find(item => item.innerText === inp.value)
-    if (!findItem) {
-      let filterItem = `<div class="filter__item"><span>${inp.value}</span>
-      <a href="#">
-          <svg><use href="img/icons/sprite.svg#icon-close"></use></svg>
-      </a>
-      </div>`
-      filterSelected.insertAdjacentHTML("beforeend", filterItem)
-    }
+if (document.querySelector(".f-search__form")?.querySelector("input").value.length > 0) {
+  resetBtn.style.visibility = "visible"
+  resetBtn.style.pointerEvents = "auto"
 }
+
+
+if (window.location.search) {
+  const searchParams = new URLSearchParams(window.location.search);
+  for (const [key, value] of searchParams) {
+    if (key === "FILTER_SEARCH") {
+      const filterSelected = document.querySelector(".filter__selected")
+      let filterItem = `<div class="filter__item"><span>${value}</span>
+          <a href="#">
+            <svg><use href="img/icons/sprite.svg#icon-close"></use></svg>
+          </a>
+        </div>`
+      filterSelected.insertAdjacentHTML("beforeend", filterItem)
+    } 
+  }
+  
+ }
+
 function searchFilterOnChange(inp) {
   let form = inp.closest(".f-search__form") || inp.parentNode.parentNode
   const resetBtn = form.querySelector(".f-search__reset")
@@ -889,5 +897,6 @@ function searchFilterOnReset(form) {
   const resetBtn = form.querySelector(".f-search__reset")
   resetBtn.style.visibility = "hidden"
   resetBtn.style.pointerEvents = "none"
+  form.querySelector("input").value = ""
 }
 
