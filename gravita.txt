@@ -1,4 +1,19 @@
- ///scripts.js str 521
+ /////////////scripts.js 
+ /// v nacalo
+function setVh() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+};
+setVh()
+window.addEventListener('resize', function () {
+  setVh();
+});
+window.addEventListener('orientationchange', function () {
+  setVh();
+}); 
+
+
+str 521
  /*
    * Product
    */
@@ -36,9 +51,8 @@
         let productOffsetBottom =
           product.offset().top +
           product.find(".product__left").height() -
-          $(window).height() +
-          delta;
-
+          $(window).height()  +
+          delta
         if (offsetTop > productOffsetBottom) {
           $(".product__right").addClass("static");
         } else {
@@ -49,5 +63,43 @@
   }
 
   
-///position: fixed menyaem na position: sticky
-.product.fixed .product__wrap{position:sticky;top:0}
+////////////////// css
+
+
+// v nacalo
+:root {
+  --vh: 1%
+}
+body {
+  height: 100%
+}
+
+
+// .product__right
+
+.product__right {
+  position:fixed;
+  z-index:5000;
+  top:calc(100% - 230px); 
+  top:calc(var(--vh, 1%) * 100 - 230px);
+  -webkit-transition: all .5s linear;
+   -o-transition: all .5s linear;
+   transition: all .5s linear
+  width:688px;
+  padding-top:20px;
+  background-color:#fff
+}
+@media screen and (max-width: 575px) {
+  .product__right {
+    top: calc(100% - 180px);
+    top: calc(var(--vh,1%) * 100 - 180px);
+    width: 460px;
+  }
+}
+
+
+//.product.fixed .product__wrap
+.product.fixed .product__wrap{
+  position:sticky;
+  top:0
+}

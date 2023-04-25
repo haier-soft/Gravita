@@ -1,13 +1,13 @@
-function set_100vh_var() {
+function setVh() {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 };
-set_100vh_var()
+setVh()
 window.addEventListener('resize', function () {
-  set_100vh_var();
+  setVh();
 });
 window.addEventListener('orientationchange', function () {
-  set_100vh_var();
+  setVh();
 }); 
 $(function () {
   var screenWidth = screen.width;
@@ -859,61 +859,18 @@ $(function () {
   // $("#min-price").val($("#range-price").slider("values", 0));
   // $("#max-price").val($("#range-price").slider("values", 1));
 });
-/* let product = document.querySelector(".product")
-if (product) {
-  console.log("dj")
-  window.addEventListener("scroll", function () {
-    let offsetTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (window.innerWidth > 991) {         
-      let productOffsetTop = product.offsetTop
-      let productOffsetBottom =
-        productOffsetTop +
-        product.querySelector(".product__row").offsetHeight -
-        product.querySelector(".product__wrap").offsetHeight;
-
-      if (
-        offsetTop > productOffsetTop &&
-        offsetTop < productOffsetBottom &&
-        !product.classList.contains("fixed")
-      ) {
-        product.classList.add("fixed")
-        product.classList.remove("absolute")
-      } else if (offsetTop < productOffsetTop) {
-        product.classList.remove("fixed");
-      } else if (
-        offsetTop > productOffsetBottom &&
-        !product.classList.contains("absolute")
-      ) {
-        product.classList.remove("fixed")
-        product.classList.add("absolute")
-      }  
-    } else {
-    let delta = 230;
-    if (window.innerWidth < 576) {
-      delta = 180;
+function searchFilterSuccess(form) {
+  event.preventDefault()
+    const filterSelected = document.querySelector(".filter__selected")
+    let inp = form.querySelector("input")
+    let findItem = Array.from(filterSelected.querySelectorAll(".filter__item")).find(item => item.innerText === inp.value)
+    if (!findItem) {
+      let filterItem = `<div class="filter__item"><span>${inp.value}</span>
+      <a href="#">
+          <svg><use href="img/icons/sprite.svg#icon-close"></use></svg>
+      </a>
+      </div>`
+      filterSelected.insertAdjacentHTML("beforeend", filterItem)
     }
-    product.querySelector(".product__right").style.top =  window.innerHeight - delta + "px"
-    let productOffsetBottom =
-      product.offsetTop +
-      product.querySelector(".product__left").offsetHeight -
-      window.innerHeight +
-      delta;
+}
 
-    if (offsetTop > productOffsetBottom) {
-      document.querySelector(".product__right").classList.add("static")
-    } else {
-      document.querySelector(".product__right").classList.remove("static")
-
-    }
-  }
-});
-} */
-/*  function set_100vh_var() {
-  document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`);
-};
-window.addEventListener('resize', function () {
-  set_100vh_var();
-});
-window.addEventListener('orientationchange', function () {
-  set_100vh_var();
-}); */

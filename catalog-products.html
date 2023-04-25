@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="css/styles.min.css">
   </head>
   <body>
+      <object style="display: none" class="sprite" type="image/svg+xml" data="../img/icons/sprite.svg" title="Ваш браузер не поддерживает SVG"></object>
     <div class="wrap">
+      <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.497 8L0 4.208l.874-.948 2.623 2.844L9.126 0 10 .948 3.497 8z" fill="#2D2A26"/>
+    </svg>
       <!-- header-->
       <header class="header">
         <!-- dropdown-->
@@ -693,7 +697,7 @@
               <!-- f-search-->
               <div class="f-search"><a class="f-search__show" href="#">Поиск</a>
                 <div class="f-search__form">
-                  <form action="">
+                  <form action="" onsubmit="searchFilterSuccess(this)">
                     <div class="form-group">
                       <input type="text" name="#" placeholder="">
                     </div>
