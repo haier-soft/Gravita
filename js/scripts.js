@@ -880,10 +880,15 @@ if (window.location.search) {
   }
   
  }
+ function cleanSearchFilter(form) {
+  form.querySelector("input").value = ""
+  const resetBtn = form.querySelector(".f-search__reset")
+  resetBtn.style.visibility = "hidden"
+  resetBtn.style.pointerEvents = "none"
+ }
  function searchFilterOnSubmit(form) {
   event.preventDefault()
-  const inp = form.querySelector("input")
-  inp.value = ""
+  cleanSearchFilter(form)
 }
 function searchFilterOnChange(inp) {
   let form = inp.closest(".f-search__form") || inp.parentNode.parentNode
@@ -898,9 +903,6 @@ function searchFilterOnChange(inp) {
 }
 function searchFilterOnReset(form) {
   event.preventDefault()
-  const resetBtn = form.querySelector(".f-search__reset")
-  resetBtn.style.visibility = "hidden"
-  resetBtn.style.pointerEvents = "none"
-  form.querySelector("input").value = ""
+  cleanSearchFilter(form)
 }
 
