@@ -859,10 +859,6 @@ $(function () {
   // $("#min-price").val($("#range-price").slider("values", 0));
   // $("#max-price").val($("#range-price").slider("values", 1));
 });
-if (document.querySelector(".f-search__form")?.querySelector("input").value.length > 0) {
-  resetBtn.style.visibility = "visible"
-  resetBtn.style.pointerEvents = "auto"
-}
 
 
 if (window.location.search) {

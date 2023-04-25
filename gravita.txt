@@ -1,105 +1,66 @@
- /////////////scripts.js 
- /// v nacalo
-function setVh() {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-};
-setVh()
-window.addEventListener('resize', function () {
-  setVh();
-});
-window.addEventListener('orientationchange', function () {
-  setVh();
-}); 
-
-
-str 521
- /*
-   * Product
-   */
-
-  let product = $(".product");
-    if (product.length > 0) {
-      $(window).on("scroll", function () {
-        let offsetTop = $(window).scrollTop();
-        if (window.innerWidth > 991) {         
-          let productOffsetTop = product.offset().top;
-          let productOffsetBottom =
-            productOffsetTop +
-            product.find(".product__row").height() -
-            product.find(".product__wrap").height();
-  
-          if (
-            offsetTop > productOffsetTop &&
-            offsetTop < productOffsetBottom &&
-            !product.hasClass("fixed")
-          ) {
-            product.addClass("fixed").removeClass("absolute");
-          } else if (offsetTop < productOffsetTop) {
-            product.removeClass("fixed");
-          } else if (
-            offsetTop > productOffsetBottom &&
-            !product.hasClass("absolute")
-          ) {
-            product.removeClass("fixed").addClass("absolute");
-          }  
-        } else {
-        let delta = 230;
-        if (window.innerWidth < 576) {
-          delta = 180;
-        }
-        let productOffsetBottom =
-          product.offset().top +
-          product.find(".product__left").height() -
-          $(window).height()  +
-          delta
-        if (offsetTop > productOffsetBottom) {
-          $(".product__right").addClass("static");
-        } else {
-          $(".product__right").removeClass("static");
-        }
-      }
-    });
-  }
-
-  
-////////////////// css
-
-
-// v nacalo
-:root {
-  --vh: 1%
-}
-body {
-  height: 100%
-}
-
-
-// .product__right
-
-.product__right {
-  position:fixed;
-  z-index:5000;
-  top:calc(100% - 230px); 
-  top:calc(var(--vh, 1%) * 100 - 230px);
-  -webkit-transition: all .5s linear;
-   -o-transition: all .5s linear;
-   transition: all .5s linear
-  width:688px;
-  padding-top:20px;
-  background-color:#fff
-}
-@media screen and (max-width: 575px) {
-  .product__right {
-    top: calc(100% - 180px);
-    top: calc(var(--vh,1%) * 100 - 180px);
-    width: 460px;
+function searchFilterOnChange(inp) {
+  let form = inp.closest(".f-search__form") || inp.parentNode.parentNode
+  const resetBtn = form.querySelector(".f-search__reset")
+  if (inp.value.length > 0) {
+    resetBtn.style.visibility = "visible"
+    resetBtn.style.pointerEvents = "auto"
+  } else {
+    resetBtn.style.visibility = "hidden"
+    resetBtn.style.pointerEvents = "none"
   }
 }
 
+//html
+<div class="f-search__form">
+    <form action="" >
+        <div class="form-group">
+            <input type="text" name="#" placeholder="" oninput="searchFilterOnChange(this)">
+        </div>
+        <button type="reset" class="f-search__reset">
+            <svg>
+                <use href="img/icons/sprite.svg#icon-close"></use>
+            </svg>
+        </button>
+        <button type="submit" class="f-search__submit">
+            <svg>
+                <use href="img/icons/sprite.svg#search"></use>
+            </svg>
+        </button>
+    </form>
+</div>
 
-//.product.fixed .product__wrap
-.product.fixed .product__wrap{
-  position:sticky;
-  top:0
+
+
+//css
+
+// dobavlyaem
+.f-search__reset{
+  visibility: hidden;
+  pointer-events: none;
+}
+.f-search__reset svg {
+  width: 14px;
+  height:14px;
+  fill:#2d2a26;
+  stroke: none;
+  opacity: 0.8;
+}
+.f-search__submit svg{
+  width:20px;
+  height:20px;
+  fill:none;
+  stroke:#2d2a26
+}
+//menyaem 
+.f-search form .form-group{
+  width:calc(100% - 80px);
+  margin-bottom:0
+}
+
+//udalyaem 
+.f-search form button svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #2d2a26;
 }
