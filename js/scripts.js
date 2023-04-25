@@ -884,4 +884,10 @@ function searchFilterOnChange(inp) {
     resetBtn.style.pointerEvents = "none"
   }
 }
+function searchFilterOnReset(form) {
+  event.preventDefault()
+  const resetBtn = form.querySelector(".f-search__reset")
+  resetBtn.style.visibility = "hidden"
+  resetBtn.style.pointerEvents = "none"
+}
 
