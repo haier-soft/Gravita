@@ -873,4 +873,15 @@ function searchFilterSuccess(form) {
       filterSelected.insertAdjacentHTML("beforeend", filterItem)
     }
 }
+function searchFilterOnChange(inp) {
+  let form = inp.closest(".f-search__form") || inp.parentNode.parentNode
+  const resetBtn = form.querySelector(".f-search__reset")
+  if (inp.value.length > 0) {
+    resetBtn.style.visibility = "visible"
+    resetBtn.style.pointerEvents = "auto"
+  } else {
+    resetBtn.style.visibility = "hidden"
+    resetBtn.style.pointerEvents = "none"
+  }
+}
 

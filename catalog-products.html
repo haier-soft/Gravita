@@ -694,9 +694,9 @@
               <!-- f-search-->
               <div class="f-search"><a class="f-search__show" href="#">Поиск</a>
                 <div class="f-search__form">
-                  <form action="" onsubmit="searchFilterSuccess(this)">
+                  <form action="" onsubmit="searchFilterSuccess(this)" onreset="searchFilterOnReset(this)">
                     <div class="form-group">
-                      <input type="text" name="#" placeholder="">
+                      <input type="text" name="#" placeholder="" oninput="searchFilterOnChange(this)">
                     </div>
                     <button type="reset" class="f-search__reset">
                       <svg>
