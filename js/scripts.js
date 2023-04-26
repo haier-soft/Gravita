@@ -5,9 +5,11 @@ function setVh() {
 setVh()
 window.addEventListener('resize', function () {
   setVh();
+  screenWidth = screen.width;
 });
 window.addEventListener('orientationchange', function () {
   setVh();
+  screenWidth = screen.width;
 }); 
 $(function () {
   var screenWidth = screen.width;
@@ -435,35 +437,35 @@ $(function () {
     e.stopPropagation();
   });
 
-  if (screenWidth > 767) {
     $(".filter__toggle").on("click", function () {
-      if ($(this).hasClass("open")) {
-        $(this).removeClass("open").find("span").text("Показать все фильтры");
-        $(".f-select:nth-child(n + 5)").slideUp();
-        $(".f-select__header")
-          .removeClass("open")
-          .siblings(".f-select__list")
-          .slideUp();
+      if (window.innerWidth > 767) {
+        if ($(this).hasClass("open")) {
+          $(this).removeClass("open").find("span").text("Показать все фильтры");
+          $(".f-select:nth-child(n + 5)").slideUp();
+          $(".f-select__header")
+            .removeClass("open")
+            .siblings(".f-select__list")
+            .slideUp();
+        } else {
+          $(this).addClass("open").find("span").text("Скрыть все фильтры");
+          $(".f-select:nth-child(n + 5)").slideDown();
+        }
       } else {
-        $(this).addClass("open").find("span").text("Скрыть все фильтры");
-        $(".f-select:nth-child(n + 5)").slideDown();
+        if ($(this).hasClass("open")) {
+          $(this).removeClass("open").find("span").text("Показать все фильтры");
+          $(".filter__selects").slideUp();
+          $(".f-select__header")
+            .removeClass("open")
+            .siblings(".f-select__list")
+            .slideUp();
+        } else {
+          $(this).addClass("open").find("span").text("Скрыть все фильтры");
+          $(".filter__selects").slideDown();
+        }
       }
+
     });
-  } else {
-    $(".filter__toggle").on("click", function () {
-      if ($(this).hasClass("open")) {
-        $(this).removeClass("open").find("span").text("Показать все фильтры");
-        $(".filter__selects").slideUp();
-        $(".f-select__header")
-          .removeClass("open")
-          .siblings(".f-select__list")
-          .slideUp();
-      } else {
-        $(this).addClass("open").find("span").text("Скрыть все фильтры");
-        $(".filter__selects").slideDown();
-      }
-    });
-  }
+  
 
   /*
    * Catalog collections
